@@ -10,4 +10,17 @@ npm start
 
 Open http://localhost:3000 in your browser.
 
-The API exposes `GET` and `POST /api/todos`, plus `PATCH` and `DELETE /api/todos/:id`.
+## Frontend
+
+The frontend is a lightweight static UI in the repository root:
+
+- `/index.html`
+- `/styles.css`
+- `/app.js`
+
+It connects to the existing API endpoints and supports:
+
+- listing todos (`GET /api/todos`)
+- creating todos (`POST /api/todos`)
+- marking todos complete/incomplete (`PATCH /api/todos/:id`)
+- deleting todos (`DELETE /api/todos/:id`)

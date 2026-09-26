@@ -1,0 +1,34 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Todo App</title>
+    <link rel="stylesheet" href="./styles.css" />
+  </head>
+  <body>
+    <main class="container">
+      <h1>Todo App</h1>
+      <form id="todo-form" class="todo-form">
+        <input id="todo-input" type="text" placeholder="Add a todo..." required maxlength="200" />
+        <button type="submit">Add</button>
+      </form>
+
+      <p id="status" class="status" aria-live="polite"></p>
+
+      <ul id="todo-list" class="todo-list"></ul>
+    </main>
+
+    <template id="todo-item-template">
+      <li class="todo-item">
+        <label>
+          <input type="checkbox" class="todo-toggle" />
+          <span class="todo-text"></span>
+        </label>
+        <button type="button" class="todo-delete" aria-label="Delete todo">Delete</button>
+      </li>
+    </template>
+
+    <script src="./app.js" defer></script>
+  </body>
+</html>
