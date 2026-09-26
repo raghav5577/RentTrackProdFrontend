@@ -42,3 +42,5 @@ form.addEventListener('submit', async (event) => {
 });
 document.querySelectorAll('.filter').forEach((button) => button.addEventListener('click', () => { activeFilter = button.dataset.filter; document.querySelector('.filter.active').classList.remove('active'); button.classList.add('active'); render(); }));
 loadTodos().catch((error) => { errorMessage.textContent = error.message; });
+
+console.log(great)
