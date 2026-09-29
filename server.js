@@ -28,7 +28,7 @@ function readBody(request) {
     request.on('error', reject);
   });
 }
-
+console.log("adding logs for creating new pr to test ")
 function serveStatic(request, response) {
   const requestedPath = request.url === '/' ? '/index.html' : request.url;
   const filePath = path.normalize(path.join(publicDirectory, requestedPath));
