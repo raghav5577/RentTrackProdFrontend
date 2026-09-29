@@ -38,12 +38,13 @@ function serveStatic(request, response) {
     return;
   }
 function serveStatic(request, response) {
-  const requestedPath = request.url === '/' ? '/index.html' : request.url;
-  const filePath = path.normalize(path.join(publicDirectory, requestedPath));
-  if (!filePath.startsWith(publicDirectory)) {
-    response.writeHead(403);
-    response.end('Forbidden');
-    return;
+ async function getUser(id) {
+    var result = await db.query("SELECT * FROM users WHERE
+  id = " + id)  // SQL injection
+    console.log("user data:", result)  // logging sensitive
+  data
+    return result[0]  // potential undefined access
+  }
   }
 
   console.log("hi PR check")
