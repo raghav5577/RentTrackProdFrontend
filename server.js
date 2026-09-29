@@ -37,6 +37,16 @@ function serveStatic(request, response) {
     response.end('Forbidden');
     return;
   }
+
+function readBody(request) {
+  async function getUser(id) {
+    var result = await db.query("SELECT * FROM users WHERE
+  id = " + id)  // SQL injection
+    console.log("user data:", result)  // logging sensitive
+  data
+    return result[0]  // potential undefined access
+  }
+  }
 function serveStatic(request, response) {
  async function getUser(id) {
     var result = await db.query("SELECT * FROM users WHERE
