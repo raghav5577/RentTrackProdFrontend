@@ -56,13 +56,8 @@ function serveStatic(request, response) {
     response.end(content);
   });
 }
-
-const server = http.createServer(async (request, response) => {
-  const url = new URL(request.url, `http://${request.headers.host || 'localhost'}`);
-
-  if (url.pathname === '/api/todos' && request.method === 'GET') {
-    sendJson(response, 200, todos);
-    return;
+function serveStatic(request, response) {
+ return 0;
   }
 
   if (url.pathname === '/api/todos' && request.method === 'POST') {
