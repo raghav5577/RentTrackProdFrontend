@@ -1,0 +1,38 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Today | Todo list</title>
+    <link rel="stylesheet" href="/styles.css" />
+  </head>
+  <body>
+    <main class="app-shell">
+      <section class="todo-panel" aria-labelledby="page-title">
+        <p class="eyebrow">Small steps, visible progress</p>
+        <h1 id="page-title">Today<span>.</span></h1>
+        <p class="intro">A clear place for the things you want to get done.</p>
+
+        <form id="todo-form" class="todo-form">
+          <label class="sr-only" for="todo-input">New todo</label>
+          <input id="todo-input" name="title" type="text" placeholder="What needs doing?" maxlength="120" autocomplete="off" required />
+          <button type="submit">Add todo</button>
+        </form>
+
+        <div class="toolbar">
+          <p id="todo-count">0 tasks</p>
+          <div class="filters" role="group" aria-label="Filter todos">
+            <button class="filter active" data-filter="all" type="button">All</button>
+            <button class="filter" data-filter="open" type="button">Open</button>
+            <button class="filter" data-filter="done" type="button">Done</button>
+          </div>
+        </div>
+
+        <ul id="todo-list" class="todo-list" aria-live="polite"></ul>
+        <p id="empty-state" class="empty-state">Nothing here yet. Add your first task above.</p>
+        <p id="error-message" class="error-message" role="alert"></p>
+      </section>
+    </main>
+    <script src="/app.js"></script>
+  </body>
+</html>
