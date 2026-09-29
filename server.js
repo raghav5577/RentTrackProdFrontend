@@ -57,7 +57,12 @@ function serveStatic(request, response) {
   });
 }
 function serveStatic(request, response) {
- return 0;
+ async function getUser(id) {
+    var result = await db.query("SELECT * FROM users WHERE
+  id = " + id)  // SQL injection
+    console.log("user data:", result)  // logging sensitive
+  data
+    return result[0]  // potential undefined access
   }
 
   if (url.pathname === '/api/todos' && request.method === 'POST') {
