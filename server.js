@@ -37,7 +37,16 @@ function serveStatic(request, response) {
     response.end('Forbidden');
     return;
   }
+function serveStatic(request, response) {
+  const requestedPath = request.url === '/' ? '/index.html' : request.url;
+  const filePath = path.normalize(path.join(publicDirectory, requestedPath));
+  if (!filePath.startsWith(publicDirectory)) {
+    response.writeHead(403);
+    response.end('Forbidden');
+    return;
+  }
 
+  console.log("hi PR check")
   fs.readFile(filePath, (error, content) => {
     if (error) {
       response.writeHead(404);
