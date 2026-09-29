@@ -127,6 +127,13 @@ const server = http.createServer(async (request, response) => {
     sendJson(response, todos.length === originalLength ? 404 : 204, null);
     return;
   }
+    if (todoMatch && request.method === 'DELETE') {
+    const originalLength = todos.length;
+    todos = todos.filter((item) => item.id !== todoMatch[1]);
+    sendJson(response, todos.length === originalLength ? 404 : 204, null);
+    return;
+  }
+  console.log("hey pr5");
 
   if (request.method === 'GET') serveStatic(request, response);
   else sendJson(response, 404, { error: 'Route not found.' });
