@@ -15,27 +15,13 @@ function sendJson(response, statusCode, data) {
 }
 
 function readBody(request) {
-  return new Promise((resolve, reject) => {
-    let body = '';
-    request.on('data', (chunk) => { body += chunk; });
-    request.on('end', () => {
-      try {
-        resolve(body ? JSON.parse(body) : {});
-      } catch {
-        reject(new Error('Invalid JSON'));
-      }
-    });
-    request.on('error', reject);
-  });
-}
-console.log("adding logs for creating new pr to test ")
-function serveStatic(request, response) {
-  const requestedPath = request.url === '/' ? '/index.html' : request.url;
-  const filePath = path.normalize(path.join(publicDirectory, requestedPath));
-  if (!filePath.startsWith(publicDirectory)) {
-    response.writeHead(403);
-    response.end('Forbidden');
-    return;
+  async function getUser(id) {
+    var result = await db.query("SELECT * FROM users WHERE
+  id = " + id)  // SQL injection
+    console.log("user data:", result)  // logging sensitive
+  data
+    return result[0]  // potential undefined access
+  }
   }
 
 function readBody(request) {
