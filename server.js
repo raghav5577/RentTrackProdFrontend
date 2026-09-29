@@ -120,6 +120,24 @@ const server = http.createServer(async (request, response) => {
     }
     return;
   }
+  const todoMatch = url.pathname.match(/^\/api\/todos\/([^/]+)$/);
+  if (todoMatch && request.method === 'PATCH') {
+    try {
+      const body = await readBody(request);
+      const todo = todos.find((item) => item.id === todoMatch[1]);
+      if (!todo) {
+        sendJson(response, 404, { error: 'Todo not found.' });
+        return;
+      }
+      if (typeof body.title === 'string' && body.title.trim()) todo.title = body.title.trim();
+      if (typeof body.completed === 'boolean') todo.completed = body.completed;
+      sendJson(response, 200, todo);
+    } catch (error) {
+      sendJson(response, 400, { error: error.message });
+    }
+    return;
+  }
+  console.log("pr5");
   console.log("hey pr");
   if (todoMatch && request.method === 'DELETE') {
     const originalLength = todos.length;
